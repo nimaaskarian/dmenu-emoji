@@ -2,7 +2,7 @@
 print_emojis() {
 cat << EOF
 index finger pointing at viewer                     🫵
-sobbing                              😭
+crying, sobbing                              😭
 grinning face                                   😀
 grinning face with big eyes                     😃
 grinning face with smiling eyes                 😄
@@ -1885,7 +1885,7 @@ case "$1" in
   "copy")
     copy_emoji
     ;;
-  "")
-    print_emojis | dmenu -p 'Emoji: ' | copy_emoji
+  *)
+    print_emojis | dmenu -p 'Emoji: ' "$@" | copy_emoji
     ;;
 esac

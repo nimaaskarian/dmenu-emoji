@@ -10,7 +10,7 @@ case "$1" in
   "copy")
     copy_emoji
     ;;
-  "")
-    print_emojis | dmenu -p 'Emoji: ' | copy_emoji
+  *)
+    print_emojis | dmenu -p 'Emoji: ' "$@" | copy_emoji
     ;;
 esac
