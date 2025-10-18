@@ -1875,7 +1875,6 @@ EOF
 }
 copy_emoji() {
   awk '{printf "%s", $NF}' | xclip -selection c
-  command -v notify-send > /dev/null && notify-send -t 200 "$emoji copied!"
 }
 
 case "$1" in
