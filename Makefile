@@ -9,7 +9,6 @@ dmenu-emoji.sh: script.sh emoji.txt ${USER_EMOJIS}
 	@echo "#!/bin/sh" > $@
 	@echo "print_emojis() {" >> $@
 	@echo "cat << EOF" >> $@
-	@cat ${USER_EMOJIS} >> $@
 	@cat emoji.txt >> $@
 	@echo "EOF" >> $@
 	@echo "}" >> $@
