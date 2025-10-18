@@ -5,7 +5,7 @@ endif
 
 default: dmenu-emoji.sh
 
-dmenu-emoji.sh: script.sh emoji.txt ${USER_EMOJIS}
+dmenu-emoji.sh: script.sh emoji.txt
 	@echo "#!/bin/sh" > $@
 	@echo "print_emojis() {" >> $@
 	@echo "cat << EOF" >> $@
@@ -16,7 +16,7 @@ dmenu-emoji.sh: script.sh emoji.txt ${USER_EMOJIS}
 	@chmod +x $@
 	@du -sh $@
 
-emoji.txt: emoji.json parse.sh
+emoji.txt: emoji.json parse.sh  ${USER_EMOJIS}
 	@sh parse.sh < emoji.json > $@
 
 emoji.json:
