@@ -1,25 +1,16 @@
-#!/bin/bash
-
-set -e
+copy_emoji() {
+  awk '{printf "%s", $NF}' | xclip -selection c
+  command -v notify-send > /dev/null && notify-send -t 200 "$emoji copied!"
+}
 
 case "$1" in
   "list")
-    data=$(sed '0,/^__DATA__$/d' "$0")
-    echo "$data"
+    print_emojis
     ;;
   "copy")
-    input=$(tee)
-    if [ ! -z "$input" ]; then
-      emoji=${input: -1}
-      echo -n "$emoji" | xclip -selection c
-      command -v notify-send > /dev/null && notify-send -t 200 "$emoji copied!"
-    fi
+    copy_emoji
     ;;
   "")
-    bash $0 list | dmenu -p 'Emoji: ' | bash $0 copy
+    print_emojis | dmenu -p 'Emoji: ' | copy_emoji
     ;;
 esac
-
-exit
-
-__DATA__

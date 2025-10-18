@@ -1,7 +1,19 @@
+USER_EMOJIS=user_emoji.txt
+ifeq ("$(wildcard $(USER_EMOJIS))","")
+USER_EMOJIS=
+endif
+
 default: dmenu-emoji.sh
 
-dmenu-emoji.sh: script.sh emoji.txt
-	@cat script.sh emoji.txt > $@
+dmenu-emoji.sh: script.sh emoji.txt ${USER_EMOJIS}
+	@echo "#!/bin/sh" > $@
+	@echo "print_emojis() {" >> $@
+	@echo "cat << EOF" >> $@
+	@cat ${USER_EMOJIS} >> $@
+	@cat emoji.txt >> $@
+	@echo "EOF" >> $@
+	@echo "}" >> $@
+	@cat script.sh >> $@
 	@chmod +x $@
 	@du -sh $@
 
