@@ -1,8 +1,9 @@
 #!/bin/sh
 print_emojis() {
 cat << EOF
-index finger pointing at viewer                     🫵
-crying, sobbing                              😭
+index finger pointing at viewer                 🫵
+crying, sobbing                                 😭
+flame, fire                                     🔥
 grinning face                                   😀
 grinning face with big eyes                     😃
 grinning face with smiling eyes                 😄
